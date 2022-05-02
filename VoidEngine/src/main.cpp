@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	game = new Game();
 
-	game->init("BitchEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+	game->init("VoidEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
 	while (game->running())
 	{
