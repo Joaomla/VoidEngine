@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Map.h"
 #include "ECS/Components.h"
+#include "entt/entity/registry.hpp"
 
 using namespace std;
 
@@ -9,8 +10,15 @@ Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
 
-Manager manager;
-auto& player(manager.addEntity());
+//Manager manager;
+//auto& player(manager.addEntity());
+
+entt::registry registry;
+const auto player = registry.create();
+
+Transform *playerTransform;
+
+char playerSpriteFilename[] = "assets/player3.png";
 
 Game::Game()
 {}
@@ -65,8 +73,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	map = new Map();
 
-	player.addComponent<Transform>();
-	player.addComponent<SpriteRenderer>("assets/player3.png");
+	playerTransform = &registry.emplace<Transform>(player);
+	registry.emplace<SpriteRenderer>(player);
+
+	registry.get<SpriteRenderer>(player).LoadSprite(playerSpriteFilename);
+	registry.get<SpriteRenderer>(player).Init(playerTransform);
 }
 
 // handles game events
@@ -88,8 +99,11 @@ void Game::handleEvents()
 // Update the game
 void Game::update(double deltaTime)
 {
-	manager.refresh();
-	manager.update();
+	Vector2 playerPosition = registry.get<Transform>(player).position += Vector2(0.1f, 0.1f);
+	registry.get<SpriteRenderer>(player).Update();
+	Vector2 pposition = registry.get<SpriteRenderer>(player).transform->position;
+
+	cout << playerPosition.x << playerTransform->position.x << endl;
 }
 
 // Render the game;
@@ -97,6 +111,7 @@ void Game::render()
 {
 	SDL_RenderClear(renderer);
 	map->DrawMap();
+	registry.get<SpriteRenderer>(player).Draw();
 	SDL_RenderPresent(renderer);
 }
 

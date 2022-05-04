@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\ECS">
+      <UniqueIdentifier>{3e68ab6f-65a8-408c-b6d6-50eeda57a48f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS">
+      <UniqueIdentifier>{05fa3cda-5124-450a-ad33-55691a34e6c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -27,10 +33,7 @@
     <ClCompile Include="src\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ECS\PositionComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ECS\SpriteComponent.cpp">
+    <ClCompile Include="src\ECS\SpriteRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,15 +48,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ECS\ECS.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="src\ECS\Components.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="src\ECS\PositionComponent.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Math\Vector2.h">
+      <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="src\ECS\SpriteComponent.h">
+    <ClInclude Include="src\ECS\Transform.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ECS\SpriteRenderer.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ECS\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
