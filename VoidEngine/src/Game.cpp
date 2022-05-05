@@ -17,8 +17,6 @@ entt::registry Game::registry;
 //GameObjects
 GameObject player;
 
-Transform *playerTransform;
-
 char playerSpriteFilename[] = "assets/player3.png";
 
 Game::Game()
@@ -77,11 +75,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	map = new Map();
 
-	playerTransform = player.AddComponent<Transform>();
 	player.AddComponent<SpriteRenderer>();
 
 	player.GetComponent<SpriteRenderer>()->LoadSprite(playerSpriteFilename);
-	player.GetComponent<SpriteRenderer>()->Init(playerTransform);
+	player.GetComponent<SpriteRenderer>()->Init();
 }
 
 // handles game events
@@ -106,7 +103,7 @@ void Game::update(double deltaTime)
 	player.GetComponent<SpriteRenderer>()->Update();
 	Vector2 pposition = player.GetComponent<SpriteRenderer>()->transform->position;
 
-	cout << playerPosition << playerTransform->position << endl;
+	cout << playerPosition << endl;
 }
 
 // Render the game;

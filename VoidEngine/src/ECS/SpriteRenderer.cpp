@@ -12,10 +12,8 @@ SDL_Point SpriteRenderer::GetTextureSize(SDL_Texture* texture) {
 	return size;
 }
 
-void SpriteRenderer::Init(Transform *transform)
+void SpriteRenderer::Init()
 {
-	this->transform = transform;
-
 	srcRect.x = srcRect.y = 0;
 
 	// source rect is the same size as the sprite
@@ -28,6 +26,7 @@ void SpriteRenderer::Init(Transform *transform)
 
 void SpriteRenderer::Update()
 {
+	// Draw where the gameObject is
 	destRect.x = (int)transform->position.x;
 	destRect.y = (int)transform->position.y;
 }

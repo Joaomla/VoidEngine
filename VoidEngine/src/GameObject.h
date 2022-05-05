@@ -7,7 +7,7 @@ class GameObject : Object
 {
 private:
 	// transform of this gameObject
-	Transform transform;
+	Transform *transform;
 
 	// entity that corresponds to this gameObject
 	entt::entity entity;
@@ -22,7 +22,9 @@ public:
 
 		// it's added a component to the entity corresponding to this GameObject
 		// and it is returned a pointer to that component
-		return &(registry->emplace<T1>(entity));
+		T1 *newComponent = &(registry->emplace<T1>(entity));
+		newComponent->transform = transform;
+		return newComponent;
 	}
 
 	template<typename T1>

@@ -22,7 +22,7 @@ public:
 	/*
 	Awake function
 	*/
-	void Init(Transform *transform);
+	void Init();
 
 	/*
 	Update function

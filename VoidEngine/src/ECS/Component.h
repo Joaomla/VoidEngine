@@ -1,6 +1,8 @@
 #pragma once
 #include "../Object.h"
-#include "Transform.h"
+
+// forward declaration of Transform to break a circular dependency
+struct Transform;
 
 class Component : Object
 {
