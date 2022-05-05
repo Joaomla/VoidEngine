@@ -92,6 +92,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Maria Lopes\Source\Repos\VoidEngine\VoidEngine\src\entt\entity;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,7 +123,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\dev\SDL2_image\lib\x64;C:\dev\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Maria Lopes\Source\Repos\VoidEngine\VoidEngine\src\entt\entity;C:\dev\SDL2_image\lib\x64;C:\dev\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -145,8 +146,10 @@
   <ItemGroup>
     <ClCompile Include="src\ECS\SpriteRenderer.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Map.cpp" />
+    <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -156,8 +159,10 @@
     <ClInclude Include="src\ECS\SpriteRenderer.h" />
     <ClInclude Include="src\ECS\Transform.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\Map.h" />
     <ClInclude Include="src\Math\Vector2.h" />
+    <ClInclude Include="src\Object.h" />
     <ClInclude Include="src\TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

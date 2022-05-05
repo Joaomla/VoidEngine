@@ -19,6 +19,12 @@
     <Filter Include="Source Files\ECS">
       <UniqueIdentifier>{05fa3cda-5124-450a-ad33-55691a34e6c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Math">
+      <UniqueIdentifier>{af29bb95-e46e-453c-8d2b-76f2986c4e3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{ff5f2c4e-3567-492d-8915-7ed04596a023}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -35,6 +41,12 @@
     </ClCompile>
     <ClCompile Include="src\ECS\SpriteRenderer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -53,16 +65,22 @@
     <ClInclude Include="src\ECS\Components.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="src\Math\Vector2.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="src\ECS\Transform.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="src\ECS\SpriteRenderer.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="src\Math\Vector2.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
     <ClInclude Include="src\ECS\Component.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

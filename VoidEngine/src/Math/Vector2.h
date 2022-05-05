@@ -1,8 +1,8 @@
 #pragma once
+#include <iostream>
 
-class Vector2
+struct Vector2
 {
-public:
 	float x, y = 0;
 
 	Vector2()
@@ -37,5 +37,11 @@ public:
 		y -= v.y;
 
 		return *this;
+	}
+
+	friend std::ostream& operator<<(std::ostream& stream, Vector2 const& v)
+	{
+		stream << "(" << v.x << "," << v.y << ")";
+		return stream;
 	}
 };

@@ -28,8 +28,8 @@ void SpriteRenderer::Init(Transform *transform)
 
 void SpriteRenderer::Update()
 {
-	destRect.x = transform->position.x;
-	destRect.y = transform->position.y;
+	destRect.x = (int)transform->position.x;
+	destRect.y = (int)transform->position.y;
 }
 
 void SpriteRenderer::Draw()

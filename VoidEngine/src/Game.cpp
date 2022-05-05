@@ -1,20 +1,21 @@
 #include "Game.h"
-#include "TextureManager.h"
-#include "Map.h"
-#include "ECS/Components.h"
-#include "entt/entity/registry.hpp"
+#include "GameObject.h"
 
 using namespace std;
 
 Map* map;
 
+// Game renderer
 SDL_Renderer* Game::renderer = nullptr;
 
-//Manager manager;
-//auto& player(manager.addEntity());
+// Game events
+SDL_Event Game::event;
 
-entt::registry registry;
-const auto player = registry.create();
+// entity component registry initialize
+entt::registry Game::registry;
+
+//GameObjects
+GameObject player;
 
 Transform *playerTransform;
 
@@ -71,19 +72,21 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	//---------------------
 
+	Object::registry = &registry;
+	player = GameObject();
+
 	map = new Map();
 
-	playerTransform = &registry.emplace<Transform>(player);
-	registry.emplace<SpriteRenderer>(player);
+	playerTransform = player.AddComponent<Transform>();
+	player.AddComponent<SpriteRenderer>();
 
-	registry.get<SpriteRenderer>(player).LoadSprite(playerSpriteFilename);
-	registry.get<SpriteRenderer>(player).Init(playerTransform);
+	player.GetComponent<SpriteRenderer>()->LoadSprite(playerSpriteFilename);
+	player.GetComponent<SpriteRenderer>()->Init(playerTransform);
 }
 
 // handles game events
 void Game::handleEvents()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 
 	switch (event.type)
@@ -99,11 +102,11 @@ void Game::handleEvents()
 // Update the game
 void Game::update(double deltaTime)
 {
-	Vector2 playerPosition = registry.get<Transform>(player).position += Vector2(0.1f, 0.1f);
-	registry.get<SpriteRenderer>(player).Update();
-	Vector2 pposition = registry.get<SpriteRenderer>(player).transform->position;
+	Vector2 playerPosition = player.GetComponent<Transform>()->position += Vector2(0.1f, 0.1f);
+	player.GetComponent<SpriteRenderer>()->Update();
+	Vector2 pposition = player.GetComponent<SpriteRenderer>()->transform->position;
 
-	cout << playerPosition.x << playerTransform->position.x << endl;
+	cout << playerPosition << playerTransform->position << endl;
 }
 
 // Render the game;
@@ -111,7 +114,7 @@ void Game::render()
 {
 	SDL_RenderClear(renderer);
 	map->DrawMap();
-	registry.get<SpriteRenderer>(player).Draw();
+	player.GetComponent<SpriteRenderer>()->Draw();
 	SDL_RenderPresent(renderer);
 }
 

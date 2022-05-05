@@ -1,7 +1,8 @@
 #pragma once
+#include "../Object.h"
 #include "Transform.h"
 
-class Component
+class Component : Object
 {
 public:
 	Transform *transform;

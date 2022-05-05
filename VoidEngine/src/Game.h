@@ -2,6 +2,10 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include <iostream>
+#include "entt/entity/registry.hpp"
+#include "TextureManager.h"
+#include "Map.h"
+#include "ECS/Components.h"
 
 class Game
 {
@@ -19,6 +23,10 @@ public:
 	bool running() { return isRunning; };
 
 	static SDL_Renderer* renderer;
+
+	static SDL_Event event;
+
+	static entt::registry registry;
 
 private:
 	int count = 0;
