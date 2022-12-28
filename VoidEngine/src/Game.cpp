@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "GameObject.h"
+#include "Input.h"
 
 using namespace std;
 
@@ -16,6 +17,9 @@ entt::registry Game::registry;
 
 //GameObjects
 GameObject player;
+
+// Input
+Input* input = new Input();
 
 char playerSpriteFilename[] = "assets/player3.png";
 
@@ -79,6 +83,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	player.GetComponent<SpriteRenderer>()->LoadSprite(playerSpriteFilename);
 	player.GetComponent<SpriteRenderer>()->Init();
+	//player.AddComponent<KeyboardController>();
 }
 
 // handles game events
@@ -99,11 +104,32 @@ void Game::handleEvents()
 // Update the game
 void Game::update(double deltaTime)
 {
-	Vector2 playerPosition = player.GetComponent<Transform>()->position += Vector2(0.1f, 0.1f);
+	//Vector2 playerPosition = player.GetComponent<Transform>()->position += Vector2(0.1f, 0.1f);
 	player.GetComponent<SpriteRenderer>()->Update();
 	Vector2 pposition = player.GetComponent<SpriteRenderer>()->transform->position;
 
-	cout << playerPosition << endl;
+	//cout << playerPosition << endl;
+	cout << input->GetKeyDown(SDLK_w);
+
+	if (Game::event.type == SDL_KEYDOWN)
+	{
+		switch (Game::event.key.keysym.sym)
+		{
+		case SDLK_w:
+			player.GetComponent<Transform>()->position += Vector2(0, -1);
+			break;
+		case SDLK_a:
+			player.GetComponent<Transform>()->position += Vector2(-1, -0);
+			break;
+		case SDLK_s:
+			player.GetComponent<Transform>()->position += Vector2(0, 1);
+			break;
+		case SDLK_d:
+			player.GetComponent<Transform>()->position += Vector2(1, -0);
+		default:
+			break;
+		}
+	}
 }
 
 // Render the game;

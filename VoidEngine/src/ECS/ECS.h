@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include <iostream>
 #include <vector>
@@ -6,7 +7,7 @@
 #include <bitset>
 #include <array>
 
-class Component;
+class Behaviour;
 class Entity;
 
 using ComponentId = std::size_t;
@@ -26,9 +27,9 @@ template <typename T> inline ComponentId getComponentTypeId() noexcept
 constexpr std::size_t maxComponents = 32;
 
 using ComponentBitSet = std::bitset<maxComponents>;
-using ComponentArray = std::array<Component*, maxComponents>;
+using ComponentArray = std::array<Behaviour*, maxComponents>;
 
-class Component
+class Behaviour
 {
 public:
 	Entity* entity;
@@ -36,14 +37,14 @@ public:
 	virtual void Update() {}
 	virtual void Draw() {}
 
-	virtual ~Component() {}
+	virtual ~Behaviour() {}
 };
 
 class Entity
 {
 private:
 	bool active = true;
-	std::vector<std::unique_ptr<Component>> components;
+	std::vector<std::unique_ptr<Behaviour>> components;
 
 	ComponentArray componentArray;
 	ComponentBitSet componentBitSet;
@@ -71,7 +72,7 @@ public:
 	{
 		T* c(new T(std::forward<TArgs>(mArgs)...));
 		c->entity = this;
-		std::unique_ptr<Component> uPtr{ c };
+		std::unique_ptr<Behaviour> uPtr{ c };
 		components.emplace_back(std::move(uPtr));
 
 		componentArray[getComponentTypeId<T>()] = c;
@@ -122,3 +123,4 @@ public:
 		return *e;
 	}
 };
+*/
