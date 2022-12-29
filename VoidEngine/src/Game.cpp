@@ -103,6 +103,7 @@ void Game::handleEvents()
 		}
 	}
 	
+	// Get array of key states
 	keystate = SDL_GetKeyboardState(NULL);
 }
 
