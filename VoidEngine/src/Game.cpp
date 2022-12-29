@@ -20,6 +20,8 @@ GameObject player;
 
 // Input
 Input* input = new Input();
+// keyboard state
+const Uint8* keystate;
 
 char playerSpriteFilename[] = "assets/player3.png";
 
@@ -89,16 +91,19 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 // handles game events
 void Game::handleEvents()
 {
-	SDL_PollEvent(&event);
-
-	switch (event.type)
+	while (SDL_PollEvent(&event))
 	{
-	case SDL_QUIT:
-		isRunning = false;
-		break;
-	default:
-		break;
+		switch (event.type)
+		{
+		case SDL_QUIT:
+			isRunning = false;
+			break;
+		default:
+			break;
+		}
 	}
+	
+	keystate = SDL_GetKeyboardState(NULL);
 }
 
 // Update the game
@@ -108,28 +113,20 @@ void Game::update(double deltaTime)
 	player.GetComponent<SpriteRenderer>()->Update();
 	Vector2 pposition = player.GetComponent<SpriteRenderer>()->transform->position;
 
-	//cout << playerPosition << endl;
-	cout << input->GetKeyDown(SDLK_w);
 
-	if (Game::event.type == SDL_KEYDOWN)
-	{
-		switch (Game::event.key.keysym.sym)
-		{
-		case SDLK_w:
-			player.GetComponent<Transform>()->position += Vector2(0, -1);
-			break;
-		case SDLK_a:
-			player.GetComponent<Transform>()->position += Vector2(-1, -0);
-			break;
-		case SDLK_s:
-			player.GetComponent<Transform>()->position += Vector2(0, 1);
-			break;
-		case SDLK_d:
-			player.GetComponent<Transform>()->position += Vector2(1, -0);
-		default:
-			break;
-		}
-	}
+	
+
+	if (keystate[SDL_SCANCODE_W])
+		player.GetComponent<Transform>()->position += Vector2(0, -1);
+
+	if (keystate[SDL_SCANCODE_A])
+		player.GetComponent<Transform>()->position += Vector2(-1, -0);
+
+	if (keystate[SDL_SCANCODE_S])
+		player.GetComponent<Transform>()->position += Vector2(0, 1);
+
+	if (keystate[SDL_SCANCODE_D])
+		player.GetComponent<Transform>()->position += Vector2(1, -0);
 }
 
 // Render the game;
