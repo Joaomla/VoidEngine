@@ -39,6 +39,11 @@ struct Vector2
 		return *this;
 	}
 
+	Vector2 operator*(float v)
+	{
+		return Vector2(x * v, y * v);
+	}
+
 	friend std::ostream& operator<<(std::ostream& stream, Vector2 const& v)
 	{
 		stream << "(" << v.x << "," << v.y << ")";

@@ -19,7 +19,7 @@ entt::registry Game::registry;
 GameObject player;
 
 // Input
-Input* input = new Input();
+//Input* input = new Input();
 // keyboard state
 const Uint8* keystate;
 
@@ -115,19 +115,17 @@ void Game::update(double deltaTime)
 	Vector2 pposition = player.GetComponent<SpriteRenderer>()->transform->position;
 
 
-	
-
 	if (keystate[SDL_SCANCODE_W])
-		player.GetComponent<Transform>()->position += Vector2(0, -1);
+		player.GetComponent<Transform>()->position += Vector2(0, -1) * deltaTime * 100;
 
 	if (keystate[SDL_SCANCODE_A])
-		player.GetComponent<Transform>()->position += Vector2(-1, -0);
+		player.GetComponent<Transform>()->position += Vector2(-1, -0) * deltaTime * 100;
 
 	if (keystate[SDL_SCANCODE_S])
-		player.GetComponent<Transform>()->position += Vector2(0, 1);
+		player.GetComponent<Transform>()->position += Vector2(0, 1) * deltaTime * 100;
 
 	if (keystate[SDL_SCANCODE_D])
-		player.GetComponent<Transform>()->position += Vector2(1, -0);
+		player.GetComponent<Transform>()->position += Vector2(1, -0) * deltaTime * 100;
 }
 
 // Render the game;

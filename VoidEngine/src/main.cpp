@@ -14,9 +14,11 @@ int main(int argc, char* argv[])
 
 	while (game->running())
 	{
+		// Calculate the deltaTime
+		// Time, in seconds, between the last frame and the current frame
 		LAST = NOW;
 		NOW = SDL_GetPerformanceCounter();
-		deltaTime = (double)((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency());
+		deltaTime = (double)((NOW - LAST) / (double)SDL_GetPerformanceFrequency());
 
 		game->handleEvents();
 		game->update(deltaTime);

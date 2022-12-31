@@ -39,14 +39,14 @@
     <ClCompile Include="src\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ECS\SpriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Object.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ECS\SpriteRenderer.cpp">
+      <Filter>Source Files\ECS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +58,6 @@
     </ClInclude>
     <ClInclude Include="src\Map.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ECS\ECS.h">
-      <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="src\ECS\Components.h">
       <Filter>Header Files\ECS</Filter>
@@ -85,6 +82,9 @@
     </ClInclude>
     <ClInclude Include="src\Input.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ECS\Collider.h">
+      <Filter>Header Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
